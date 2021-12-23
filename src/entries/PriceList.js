@@ -14,15 +14,15 @@ export default function PriceList(props) {
 
   const convertTimeToPrice = () => {
     // hours + mins
-    const matches = [...text.matchAll(/(([\d\.]+)hour\s?)?((\d+)min)?/g)];
+    const matches = [...text.matchAll(/(([\d\.]+)day ?)?(([\d\.]+)hour ?)?((\d+)min)?/g)];
     let result = text;
     for(let match of matches) {
-      const hours = parseFloat(match[2]) || 0;
-      const mins = parseFloat(match[4]) || 0;
-      console.log(hours);
-      if(!hours && !mins) continue;
+      const days = match[2] ? parseFloat(match[2]) : false;
+      const hours = match[4] ? parseFloat(match[4]) : false;
+      const mins = match[6] ? parseFloat(match[6]) : false;
+      if(days === false && hours === false && mins === false) continue;
 
-      const matchHours = hours + mins / 60;
+      const matchHours = days * 4 + hours + mins / 60;
       const matchPrice = Math.ceil(price * matchHours / roundTo * multiplier) * roundTo;
       totalHours += matchHours;
 

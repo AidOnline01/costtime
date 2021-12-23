@@ -8,8 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="price-list"></div>
+    <div id="clear-list"></div>
 
-    <script src="./dist/index.js"></script>
+    <script src="./dist/clear.js"></script>
 </body>
 </html>

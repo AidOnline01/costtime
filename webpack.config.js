@@ -4,7 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js',
+        clear: './src/clear.js'
+    },
     mode: isProduction ? 'production' : 'development',
     output: {
         path: path.resolve(__dirname, 'dist'),
